@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useQuiosco from "../hooks/useQuiosco";
 import Category from "./Category";
 
@@ -7,12 +7,29 @@ const Sidebar = () => {
   const { categories } = useQuiosco();
   const [open, setOpen] = useState(false);
 
+  const openBtn = useRef<HTMLButtonElement>(null);
+
+  const handleCloseSidebar = (e: MouseEvent) => {
+    if (open && openBtn.current && !openBtn.current.contains(e.target as Node)) {
+      setOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleCloseSidebar);
+
+    return () => {
+      document.removeEventListener("click", handleCloseSidebar);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
   return (
     <>
       <div className="flex justify-between items-center py-2 mb-2">
         <Image width={300} height={100} src={"/assets/img/logo.svg"} alt="Logo" className="w-full object-contain" />
 
-        <button type="button" className="md:hidden mr-2" onClick={() => setOpen(!open)}>
+        <button ref={openBtn} type="button" className="md:hidden mr-2" onClick={() => setOpen(!open)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -27,7 +44,9 @@ const Sidebar = () => {
       </div>
 
       <nav
-        className={`${open ? "" : "-translate-x-[100%] md:translate-x-0"} fixed h-full bg-white transition-all duration-300 w-auto z-10`}
+        className={`${
+          open ? "" : "-translate-x-[100%] md:translate-x-0"
+        } fixed h-full bg-white transition-all duration-300 w-auto z-[1] md:z-0`}
       >
         {categories.map((category) => (
           <Category key={category.id} category={category} closeNavMobile={() => setOpen(false)} />

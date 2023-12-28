@@ -6,23 +6,19 @@ const Category = ({ category, closeNavMobile }: { category: ICategory; closeNavM
   const { handleClickCategory, currentCategory } = useQuiosco();
 
   return (
-    <div
+    <button
+      type="button"
       className={`${currentCategory?.id === id ? "bg-amber-400" : ""}
-        flex items-center gap-4 w-full border p-5 hover:bg-amber-400 cursor-pointer`}
+      flex items-center gap-4 w-full border p-5 hover:bg-amber-400 cursor-pointer`}
+      onClick={() => {
+        handleClickCategory(id);
+        closeNavMobile && closeNavMobile();
+      }}
     >
       <Image width={70} height={70} src={`/assets/img/icono_${icon}.svg`} alt={name} />
 
-      <button
-        type="button"
-        className="text-2xl font-bold"
-        onClick={() => {
-          handleClickCategory(id);
-          closeNavMobile && closeNavMobile();
-        }}
-      >
-        {name}
-      </button>
-    </div>
+      <span className="text-2xl font-bold">{name}</span>
+    </button>
   );
 };
 

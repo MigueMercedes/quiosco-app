@@ -16,6 +16,7 @@ const modalStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    zIndex: 1000,
   },
 };
 
@@ -47,7 +48,7 @@ export default function Layout({ children, page }: { children: ReactNode; page: 
       </div>
 
       {modal && (
-        <Modal isOpen={modal} style={modalStyles}>
+          <Modal isOpen={modal} style={modalStyles}>
           <ModalProduct />
         </Modal>
       )}
