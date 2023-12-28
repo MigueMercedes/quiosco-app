@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import useQuiosco from "../hooks/useQuiosco";
-import Layout from "../layout/Layout";
 import Product from "../components/Product";
+import Layout from "../layout/Layout";
 
 const Home: NextPage = () => {
   const { currentCategory } = useQuiosco();
