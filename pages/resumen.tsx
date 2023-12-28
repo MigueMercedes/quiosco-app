@@ -1,6 +1,6 @@
 import ResumeProduct from '../components/ResumeProduct';
 import useQuiosco from '../hooks/useQuiosco';
-import Layout from '../layout/layout';
+import Layout from '../layout/Layout';
 
 const Resumen = () => {
 	const { order } = useQuiosco();
