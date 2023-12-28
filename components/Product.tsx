@@ -10,7 +10,7 @@ const Product = ({ product }: { product: IProduct }) => {
     <div className="border p-3 h-full flex-col justify-between">
       <Image src={`/assets/img/${image}.jpg`} alt={`Imagen de ${name}`} width={400} height={500} />
 
-      <div className="min-h-[200px] p-5 flex flex-col justify-between">
+      <div className="min-h-[230px] p-5 flex flex-col justify-between">
         <h3 className="text-2xl font-bold">{name}</h3>
         <p className="font-black text-4xl text-amber-500">{formatAmount(price)}</p>
 

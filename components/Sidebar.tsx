@@ -1,7 +1,7 @@
 import Image from "next/image";
+import { useState } from "react";
 import useQuiosco from "../hooks/useQuiosco";
 import Category from "./Category";
-import { useEffect, useState } from "react";
 
 const Sidebar = () => {
   const { categories } = useQuiosco();
@@ -26,17 +26,13 @@ const Sidebar = () => {
         </button>
       </div>
 
-      <div className={`${open ? "block" : "relative overflow-x-hidden transition-all duration-500"}`}>
-        <nav
-          className={`${
-            open ? "right-2 top-20" : "translate-x-[300%] md:block"
-          } transition-all md:relative w-auto z-10 bg-white absolute`}
-        >
-          {categories.map((category) => (
-            <Category key={category.id} category={category} closeNavMobile={() => setOpen(false)} />
-          ))}
-        </nav>
-      </div>
+      <nav
+        className={`${open ? "" : "-translate-x-[100%] md:translate-x-0"} fixed h-full bg-white transition-all duration-300 w-auto z-10`}
+      >
+        {categories.map((category) => (
+          <Category key={category.id} category={category} closeNavMobile={() => setOpen(false)} />
+        ))}
+      </nav>
     </>
   );
 };
