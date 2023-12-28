@@ -18,9 +18,6 @@ class CategoriesProvider extends Base {
     return this.get('/categories');
   }
 
-  async getCategory(id: string) {
-    return this.get(`/categories/${id}`);
-  }
 }
 
 export default CategoriesProvider;

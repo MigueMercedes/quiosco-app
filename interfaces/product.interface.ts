@@ -5,3 +5,14 @@ export interface IProduct {
   image?: string;
   categoryId: number;
 }
+
+export interface IProducts {
+  id: number;
+  name: string;
+  icon?: string;
+  products: IProduct[];
+}
+
+export interface IOrder extends IProduct {
+  count: number;
+}

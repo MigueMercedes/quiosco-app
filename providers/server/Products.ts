@@ -17,10 +17,6 @@ class ProductsProvider extends Base {
   async getProducts() {
     return this.get('/products');
   }
-
-  async getProduct(id: string) {
-    return this.get(`/products/${id}`);
-  }
 }
 
 export default ProductsProvider;
