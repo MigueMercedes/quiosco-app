@@ -7,8 +7,10 @@ const Resumen = () => {
 
 	return (
 		<Layout page='Resumen'>
-			<h1 className='text-4xl font-black'>Resumen</h1>
-			<p className='text-2xl my-10'>Revisa tu pedido</p>
+			<h1 className='text-4xl font-black mb-10'>Resumen</h1>
+			{order.length > 0 && (
+				<p className='text-2xl my-10 mb-5'>Revisa tu pedido</p>
+			)}
 
 			{order.length === 0 ? (
 				<p className='text-center text-4xl'>No hay elementos en tu pedido</p>

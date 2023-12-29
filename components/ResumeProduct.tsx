@@ -2,15 +2,27 @@ import Image from "next/image";
 import { formatAmount } from "../helpers";
 import { IOrder } from "../interfaces/product.interface";
 import useQuiosco from "../hooks/useQuiosco";
+import { useState } from "react";
 
 interface IProps {
   product: IOrder;
 }
 const ResumeProduct = ({ product: { name, image, price, count, id } }: IProps) => {
   const { handleEditCount, handleDeleteCount } = useQuiosco();
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  const handleDelete = () => {
+    setIsDeleted(true);
+
+    if (confirm("¿Deseas eliminar el producto?")) {
+      setTimeout(() => {
+        handleDeleteCount(id);
+      }, 300);
+    }
+  };
 
   return (
-    <div className="shadow p-5 mb-3 flex gap-10 items-center">
+    <div className={`shadow p-5 mb-3 flex gap-10 items-center ${isDeleted && "fade-out"}`}>
       <div className="w-full h-full md:w-1/6">
         <Image
           width={300}
@@ -21,7 +33,7 @@ const ResumeProduct = ({ product: { name, image, price, count, id } }: IProps) =
         />
       </div>
 
-      <div className="w-full h-full md:w-4/6 space-y-3">
+      <div className="w-full h-full md:w-4/6 space-y-3 out">
         <p className="text-3xl font-bold text-ellipsis text-balance">{name}</p>
         <p className="text-xl font-semibold">
           Cantidad: <span className="font-bold text-2xl text-black">{count}</span>
@@ -60,7 +72,9 @@ const ResumeProduct = ({ product: { name, image, price, count, id } }: IProps) =
         <button
           type="button"
           className="flex items-center gap-2 bg-red-700 hover:bg-red-800 px-5 py-2 text-white rounded-md font-bold uppercase shadow-md w-full"
-          onClick={() => handleDeleteCount(id)}
+          onClick={() => {
+            handleDelete();
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

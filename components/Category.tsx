@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { ICategory } from "../interfaces/category.interface";
 import useQuiosco from "../hooks/useQuiosco";
+import { useRouter } from "next/router";
 const Category = ({ category, closeNavMobile }: { category: ICategory; closeNavMobile?: () => void }) => {
   const { id, name, icon } = category;
   const { handleClickCategory, currentCategory } = useQuiosco();
+  const router = useRouter();
 
   return (
     <button
@@ -13,6 +15,7 @@ const Category = ({ category, closeNavMobile }: { category: ICategory; closeNavM
       onClick={() => {
         handleClickCategory(id);
         closeNavMobile && closeNavMobile();
+        router.push('/')
       }}
     >
       <Image width={70} height={70} src={`/assets/img/icono_${icon}.svg`} alt={name} />
