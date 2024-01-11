@@ -21,7 +21,7 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener("click", handleCloseSidebar);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   return (

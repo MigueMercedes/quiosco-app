@@ -12,7 +12,3 @@ export interface IProducts {
   icon?: string;
   products: IProduct[];
 }
-
-export interface IOrder extends IProduct {
-  count: number;
-}

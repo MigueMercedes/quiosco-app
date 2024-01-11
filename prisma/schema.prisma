@@ -32,5 +32,6 @@ model Order {
   date String
   amount String
   orderData Json
+  status Boolean @default(false)
 }
 

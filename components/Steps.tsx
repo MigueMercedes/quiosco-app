@@ -10,17 +10,17 @@ const steps: Step[] = [
   {
     step: 1,
     name: "Menú",
-    url: "/",
+    url: "/cliente",
   },
   {
     step: 2,
     name: "Resumen",
-    url: "/resumen",
+    url: "/cliente/resumen",
   },
   {
     step: 3,
     name: "Datos y Total",
-    url: "/total",
+    url: "/cliente/total",
   },
 ];
 

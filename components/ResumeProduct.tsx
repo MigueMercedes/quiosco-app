@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { formatAmount } from "../helpers";
-import { IOrder } from "../interfaces/product.interface";
-import useQuiosco from "../hooks/useQuiosco";
 import { useState } from "react";
+import { formatAmount } from "../helpers";
+import useQuiosco from "../hooks/useQuiosco";
+import { IOrder } from "../interfaces/order.interface";
 
 interface IProps {
   product: IOrder;

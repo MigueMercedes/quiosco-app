@@ -1,21 +1,32 @@
 import type { NextPage } from "next";
-import useQuiosco from "../hooks/useQuiosco";
-import Product from "../components/Product";
-import Layout from "../layout";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
-  const { currentCategory } = useQuiosco();
+  const router = useRouter();
   return (
-    <Layout page={`Menú ${currentCategory.name}`}>
-      <h1 className="text-4xl font-black">{currentCategory?.name}</h1>
-      <p className="text-2xl my-10">Elige y personaliza tu pedido a continuación</p>
+    <div className="bg-gray-100 h-screen flex items-center justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-md w-96">
+        <h1 className="text-2xl font-bold mb-6 text-center">Quiosco App</h1>
 
-      <div className="grid gap-4 place-items-center grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-        {currentCategory?.products?.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
+        <div className="grid grid-cols-1 gap-4">
+          <button
+            type="button"
+            className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-md w-full"
+            onClick={() => router.push("/administracion/pendientes")}
+          >
+            Area de Cocina
+          </button>
+
+          <button
+            type="button"
+            className="bg-amber-500 hover:bg-amber-600 text-white py-2 px-4 rounded-md w-full"
+            onClick={() => router.push("/cliente")}
+          >
+            Area de Cliente
+          </button>
+        </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

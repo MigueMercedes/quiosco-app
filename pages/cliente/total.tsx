@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { formatAmount } from "../helpers";
-import useQuiosco from "../hooks/useQuiosco";
-import Layout from "../layout";
+import { formatAmount } from "../../helpers";
+import useQuiosco from "../../hooks/useQuiosco";
+import Layout from "../../layout/ClientLayout";
 
 const Total = () => {
   const { order, orderName, setOrderName, processOrder, totalAmount } = useQuiosco();
@@ -9,7 +9,7 @@ const Total = () => {
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    setIsValid(order.length === 0 || orderName.trim().length < 3);
+    setIsValid(order.length === 0 || orderName.trim().length < 3) ;
 
     if (isValid === true) {
       const timer = setTimeout(() => {

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { ReactNode } from "react";
-import Sidebar from "../components/Sidebar";
 import Modal from "react-modal";
-import useQuiosco from "../hooks/useQuiosco";
-import ModalProduct from "../components/ModalProduct";
 import { ToastContainer } from "react-toastify";
+import ModalProduct from "../components/ModalProduct";
+import Sidebar from "../components/Sidebar";
+import useQuiosco from "../hooks/useQuiosco";
 
 import "react-toastify/dist/ReactToastify.css";
 import Steps from "../components/Steps";
@@ -48,7 +48,7 @@ export default function Layout({ children, page }: { children: ReactNode; page: 
       </div>
 
       {modal && (
-          <Modal isOpen={modal} style={modalStyles}>
+        <Modal isOpen={modal} style={modalStyles}>
           <ModalProduct />
         </Modal>
       )}

@@ -1,9 +1,12 @@
+import axios from "axios";
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { ICategoriesResponse, ICategory } from "../interfaces/category.interface";
-import CategoriesProvider from "../providers/server/Categories";
-import { IOrder, IProduct } from "../interfaces/product.interface";
 import { toast } from "react-toastify";
 
+import { useRouter } from "next/router";
+import { ICategoriesResponse } from "../interfaces/category.interface";
+import { IOrder } from "../interfaces/order.interface";
+import { IProduct } from "../interfaces/product.interface";
+import CategoriesProvider from "../providers/server/Categories";
 interface QuioscoContext {
   categories: ICategoriesResponse[];
   currentCategory: ICategoriesResponse;
@@ -32,6 +35,8 @@ export const QuioscoProvider = ({ children }: { children: ReactNode }) => {
   const [order, setOrder] = useState([] as IOrder[]);
   const [orderName, setOrderName] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
+
+  const router = useRouter();
 
   const getCategories = async () => {
     const categories: ICategoriesResponse[] = await CategoriesProvider.instance.getCategories();
@@ -79,7 +84,28 @@ export const QuioscoProvider = ({ children }: { children: ReactNode }) => {
 
   const processOrder = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Procesando pedido...");
+
+    try {
+      const { data } = await axios.post("/api/order", {
+        name: orderName,
+        orderData: order,
+        amount: totalAmount.toString(),
+        date: Date.now().toString(),
+      });
+
+      setCurrentCategory(categories[0]);
+      setOrderName("");
+      setOrder([]);
+      setTotalAmount(0);
+
+      toast.success("Pedido Realizado Correctamente...");
+
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

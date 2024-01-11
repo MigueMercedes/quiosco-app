@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { IProduct } from "../interfaces/product.interface";
 import { formatAmount } from "../helpers";
 import useQuiosco from "../hooks/useQuiosco";
+import { IProduct } from "../interfaces/product.interface";
 
 const Product = ({ product }: { product: IProduct }) => {
   const { handleSetProduct, handleChangeModal } = useQuiosco();
