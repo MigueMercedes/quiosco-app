@@ -7,6 +7,7 @@ import { ICategoriesResponse } from "../interfaces/category.interface";
 import { IOrder } from "../interfaces/order.interface";
 import { IProduct } from "../interfaces/product.interface";
 import CategoriesProvider from "../providers/server/Categories";
+
 interface QuioscoContext {
   categories: ICategoriesResponse[];
   currentCategory: ICategoriesResponse;
@@ -101,7 +102,7 @@ export const QuioscoProvider = ({ children }: { children: ReactNode }) => {
       toast.success("Pedido Realizado Correctamente...");
 
       setTimeout(() => {
-        router.push("/");
+        router.push("/cliente");
       }, 3000);
     } catch (error) {
       console.log(error);

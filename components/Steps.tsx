@@ -30,9 +30,9 @@ const Steps = () => {
   const calculateProgress = () => {
     let percent;
 
-    if (router.pathname === "/") {
+    if (router.pathname === "/cliente") {
       percent = 2;
-    } else if (router.pathname === "/resumen") {
+    } else if (router.pathname === "/cliente/resumen") {
       percent = 50;
     } else {
       percent = 100;

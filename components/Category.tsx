@@ -15,7 +15,7 @@ const Category = ({ category, closeNavMobile }: { category: ICategory; closeNavM
       onClick={() => {
         handleClickCategory(id);
         closeNavMobile && closeNavMobile();
-        router.push('/')
+        router.push('/cliente')
       }}
     >
       <Image width={70} height={70} src={`/assets/img/icono_${icon}.svg`} alt={name} />
