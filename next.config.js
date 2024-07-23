@@ -1,18 +1,14 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images: {
-    domains: []
-  },
-  i18n: {
-    locales: ['en', 'es'],
-    defaultLocale: 'en'
-  },
-  compiler: {
-    styledComponents: true
-  },
-  experimental: {
-    concurrentFeatures: true
+  rewrites: async () => {
+    return [
+      {
+        source: '/api/:path*',
+        // destination: 'https://api.example.com/:path*',
+      },
+    ]
   }
 }
 
