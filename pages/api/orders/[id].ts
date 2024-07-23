@@ -1,6 +1,6 @@
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../prisma/prismaClient'
-import { Prisma } from '@prisma/client'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       order: updatedOrder
     })
   } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+    if (error instanceof PrismaClientKnownRequestError) {
       if (error.code === 'P2025') {
         return res.status(404).json({ message: 'Order not found', success: false })
       }
