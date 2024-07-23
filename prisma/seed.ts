@@ -1,6 +1,6 @@
-import prisma from '../prisma/prismaClient'
 import { categories } from './data/categories'
 import { products } from './data/products'
+import prisma from './prismaClient'
 
 const main = async () => {
   try {
