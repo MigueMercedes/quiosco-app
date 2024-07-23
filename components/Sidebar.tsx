@@ -45,7 +45,7 @@ const Sidebar = () => {
 
       <nav
         className={`${
-          open ? "" : "-translate-x-[100%] md:translate-x-0 h-full shadow md:shadow-none"
+          open ? "" : "overflow-auto -translate-x-[100%] md:translate-x-0 h-full shadow md:shadow-none"
         } fixed h-full bg-white transition-all duration-300 w-auto z-[1] md:z-0`}
       >
         {categories.map((category) => (

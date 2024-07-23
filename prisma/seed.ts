@@ -1,21 +1,19 @@
-import { categories } from './data/categories';
-import { products } from './data/products';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from '../prisma/prismaClient'
+import { categories } from './data/categories'
+import { products } from './data/products'
 
 const main = async () => {
   try {
     await prisma.category.createMany({
-      data: categories,
-    });
+      data: categories
+    })
 
     await prisma.product.createMany({
-      data: products,
-    });
+      data: products
+    })
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
-main();
+main()
