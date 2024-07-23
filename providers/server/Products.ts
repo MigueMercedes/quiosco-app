@@ -1,11 +1,10 @@
-import { serverConfig } from '../../config';
 import Base from '../Base';
 
 class ProductsProvider extends Base {
   private static _instance: ProductsProvider;
 
   constructor() {
-    super(`${serverConfig.api}`);
+    super('/api');
   }
 
   public static get instance() {
